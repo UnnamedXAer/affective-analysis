@@ -1,0 +1,37 @@
+Agent 1: Good morning, thank you for calling ElectricVolt. My name is Agent 1, how can I assist you today?
+
+Customer: Finally, someone answered! I've been trying to reach your company for days now. I am extremely angry with the service I received!
+
+Agent 1: I apologize for the inconvenience, sir. Could you please provide me with your name and account details so that I can better assist you?
+
+Customer: My name is John Smith and my account number is 123456789.
+
+Agent 1: Thank you, Mr. Smith. I'm sorry to hear about your frustration. Could you please share the details of the service issue you experienced?
+
+Customer: Well, I had an electrician from your company come to my house last week to fix some faulty wiring. Not only did they arrive late, but they also left without completing the job properly. I'm still having issues with my electrical system!
+
+Agent 1: I understand your frustration, Mr. Smith. I apologize for the inconvenience caused. I will ensure that your concern is addressed promptly. Can you please provide me with the specific details of the incomplete job?
+
+Customer: The electrician didn't fix the wiring properly, and now I'm experiencing frequent power outages. This is unacceptable, especially considering the amount I paid for the service!
+
+Agent 1: I apologize for the inconvenience caused by our technician, Mr. Smith. We value your feedback and take this matter seriously. Rest assured, I will escalate your complaint to our technical team immediately. They will reach out to you within the next 24 hours to schedule a follow-up appointment and resolve the issue.
+
+Customer: It better be resolved soon! I've had to deal with this inconvenience for far too long. I expect a prompt response and a proper solution!
+
+Agent 1: I completely understand your frustration, Mr. Smith, and I assure you that we will do everything in our power to rectify this situation as quickly as possible. We appreciate your patience and cooperation.
+
+Customer: Well, I hope your team does a better job this time. This whole experience has been a nightmare. I expected better from ElectricVolt!
+
+Agent 1: I apologize once again for the inconvenience caused, Mr. Smith. Your feedback is valuable to us, and we will use it to improve our services. If you have any other concerns or suggestions, please feel free to share them with us.
+
+Customer: I don't have any other concerns at the moment, but I do hope that ElectricVolt takes my feedback seriously and ensures that such incidents don't happen in the future.
+
+Agent 1: Absolutely, Mr. Smith. Your feedback is important to us, and we will make sure to address the issues raised. I would like to thank you for bringing this to our attention, and I apologize for any inconvenience caused. Is there anything else I can assist you with today?
+
+Customer: No, that's all for now. I hope to see a resolution soon.
+
+Agent 1: I understand, Mr. Smith. Thank you for your patience and cooperation. We will reach out to you shortly with an update on the resolution. Have a great day!
+
+Customer: Thank you, goodbye.
+
+Agent 1: Goodbye, Mr. Smith. Take care.

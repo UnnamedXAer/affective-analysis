@@ -1,0 +1,15 @@
+chunking:
+  # Target number of turns (exchanges) per chunk
+  turns_per_chunk: 5
+  
+  # Maximum words per chunk (null = unlimited)
+  # If set, chunks will stop adding turns once this limit is approached
+  max_length_words: ~
+  
+  # Minimum statements required per chunk
+  # Enforced even if exceeding max_length_words
+  min_statements: 2
+  
+  # Fraction of each chunk to overlap with the next (0.0 to 1.0)
+  # 0.2 = 20% overlap, creates rolling window for smoother transitions
+  overlap_factor: 0.2
