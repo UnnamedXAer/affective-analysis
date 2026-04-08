@@ -1,7 +1,7 @@
 """Main orchestrator for the affective analysis pipeline."""
 
 from pathlib import Path
-from src.config import load_config
+from src.config import must_load_config
 from src.reader.parser import BaseParser, ConversationParser
 from src.reader.stream import FileStreamingChunker
 
@@ -10,7 +10,7 @@ def main():
     """Run the affective analysis pipeline on a conversation file."""
 
     # Load configuration
-    config = load_config()
+    config = must_load_config()
     print(f"📋 Configuration loaded:")
     print(f"   - turns_per_chunk: {config.turns_per_chunk}")
     print(f"   - max_length_words: {config.max_length_words}")
