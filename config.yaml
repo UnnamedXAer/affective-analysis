@@ -1,6 +1,6 @@
 chunking:
   # Target number of turns (exchanges) per chunk
-  turns_per_chunk: 5
+  turns_per_chunk: 3
   
   # Maximum words per chunk (null/0 = unlimited)
   # If set, chunks will stop adding turns once this limit is approached

@@ -1,6 +1,7 @@
 """Main orchestrator for the affective analysis pipeline."""
 
 from pathlib import Path
+from src.reader.reader import next_chunk
 from src.config import must_load_config
 
 
@@ -24,6 +25,9 @@ def main():
     if not input_file.exists():
         print(f"❌ Input file not found: {input_file}")
         return
+
+    for ch in next_chunk(input_file, config_chunking):
+        print(ch)
 
     print(f"✅ Processing complete!")
 
