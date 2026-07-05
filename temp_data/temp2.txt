@@ -1,4 +1,5 @@
-Agent 1: Good morning, thank you for calling ElectricVolt. My name is Agent 1, how can I assist you today?
+Agent 1: Good morning, thank you for calling ElectricVolt. 
+My name is Agent 1, how can I assist you today?
 
 Customer: Finally, someone answered! I've been trying to reach your company for days now. I am extremely angry with the service I received!
 

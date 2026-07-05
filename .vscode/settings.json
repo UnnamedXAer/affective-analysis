@@ -1,5 +1,13 @@
 {
   "cSpell.words": [
     "Chunker"
-  ]
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.pytestEnabled": true,
+  "python.testing.pytestArgs": [
+    "tests",
+    "-o",
+    "python_files=*_test.py"
+  ],
+  "python.testing.pytestPath": "uv",
 }

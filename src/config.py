@@ -5,11 +5,6 @@ from pydantic import BaseModel, model_validator
 import yaml
 
 
-class Config:
-    def __init__(self, chunking_config: ChunkingConfig):
-        self.chunking_config: ChunkingConfig = chunking_config
-
-
 class ChunkingConfig(BaseModel):
     turns_per_chunk: int = 5
     max_turn_length_words: int = 0
@@ -28,6 +23,12 @@ class ChunkingConfig(BaseModel):
                 stacklevel=2,
             )
         return self
+
+class Config:
+    def __init__(self, chunking_config: ChunkingConfig):
+        self.chunking_config: ChunkingConfig = chunking_config
+
+
 
 
 def must_load_config(path: str) -> Config:
