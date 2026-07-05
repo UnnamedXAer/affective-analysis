@@ -3,6 +3,14 @@
 from pathlib import Path
 from src.reader.reader import next_chunk
 from src.config import must_load_config
+import sys
+
+
+for output in [sys.stdout, sys.stderr]:
+    if hasattr(output, "reconfigure"):
+        # powershell falls back to cp1252 when redirecting output to a file, so we need to reconfigure it to utf-8
+        output.reconfigure(encoding="utf-8", errors="replace") # type: ignore
+
 
 
 def main():
@@ -10,7 +18,7 @@ def main():
 
     # Load configuration
     config = must_load_config("config.yaml")
-    config_chunking= config.chunking_config
+    config_chunking = config.chunking_config
     print(f"📋 Configuration loaded:")
     print(f"   - turns_per_chunk: {config_chunking.turns_per_chunk}")
     print(f"   - max_turn_length_words: {config_chunking.max_turn_length_words}")
@@ -27,6 +35,7 @@ def main():
         return
 
     for ch in next_chunk(input_file, config_chunking):
+        print()
         print(ch)
 
     print(f"✅ Processing complete!")
