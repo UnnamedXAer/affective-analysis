@@ -1,6 +1,7 @@
 {
   "cSpell.words": [
-    "Chunker"
+    "Chunker",
+    "pytest"
   ],
   "python.testing.unittestEnabled": false,
   "python.testing.pytestEnabled": true,

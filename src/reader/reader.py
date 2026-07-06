@@ -82,7 +82,8 @@ def stream(config: ChunkingConfig, path: Path) -> Generator[Turn]:
                     remaining_words = (
                         config.max_turn_length_words - current_turn.word_count
                     )
-                    line = remove_excess_words(line, line_words_count, remaining_words)
+
+                    line, line_words_count = remove_excess_words(line, line_words_count, remaining_words)
 
                 current_turn.text += "\n" + line
                 current_turn.word_count += line_words_count
@@ -126,6 +127,7 @@ def next_chunk(
 def get_words_count(text: str) -> int:
     return len(text.split())
 
+
 WORD_BREAK_CHARS_ = [
     " ",
     "\n",
@@ -154,16 +156,53 @@ WORD_BREAK_CHARS_ = [
 WORD_BREAK_CHARS = set(WORD_BREAK_CHARS_)
 
 
+def remove_excess_words(text: str, text_words_count: int, max_words: int) -> tuple[str, int]:
+    if max_words <= 0:
+        return text, text_words_count
 
-def remove_excess_words(text: str, text_words_count: int, max_words: int) -> str:
+    if max_words >= text_words_count:
+        return text, text_words_count
 
     current_words_count = text_words_count
     position = len(text)
-    was_previous_char_word_break = False
+    in_word = False
     while position > 0 and current_words_count > max_words:
         position -= 1
-        if not was_previous_char_word_break and text[position] in WORD_BREAK_CHARS:
-            was_previous_char_word_break = True
-            current_words_count -= 1
+        ch = text[position]
+        if ch in WORD_BREAK_CHARS:
+            if in_word:
+                current_words_count -= 1
+                in_word = False
+        else:
+            if not in_word:
+                in_word = True
 
-    return text[:position]
+    return text[:position], current_words_count
+
+def remove_excess_words_optimized(text: str, text_words_count: int, max_words: int) -> tuple[str, int]:
+
+    if max_words <= 0:
+        return text, text_words_count
+
+    if max_words >= text_words_count:
+        return text, text_words_count
+
+    word_count = 0
+    last_break_index = 0
+    in_word = False
+
+    for index, ch in enumerate(text):
+        if ch in WORD_BREAK_CHARS:
+            if in_word:
+                in_word = False
+            last_break_index = index
+            continue
+
+        if not in_word:
+            if word_count == max_words:
+                return text[:last_break_index], max_words
+
+            word_count += 1
+            in_word = True
+
+    return (text, text_words_count) if word_count >= max_words else (text[:last_break_index], word_count)

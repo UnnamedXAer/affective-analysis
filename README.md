@@ -1,6 +1,6 @@
 # Affective Analysis
 
-# Run
+## Run
 
 ```bash
 # run the application
@@ -18,4 +18,7 @@ uv run pytest -k "test_unit"
 
 # run benchmark tests
 uv run pytest -k "test_benchmark"
+
+# run a single file of tests
+uv run pytest tests/reader/benchmark_word_remove_test.py   
 ```
