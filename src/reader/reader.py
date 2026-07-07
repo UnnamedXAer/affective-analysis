@@ -83,7 +83,9 @@ def stream(config: ChunkingConfig, path: Path) -> Generator[Turn]:
                         config.max_turn_length_words - current_turn.word_count
                     )
 
-                    line, line_words_count = remove_excess_words(line, line_words_count, remaining_words)
+                    line, line_words_count = remove_excess_words(
+                        line, line_words_count, remaining_words
+                    )
 
                 current_turn.text += "\n" + line
                 current_turn.word_count += line_words_count
@@ -128,7 +130,7 @@ def get_words_count(text: str) -> int:
     return len(text.split())
 
 
-WORD_BREAK_CHARS_ = [
+WORD_BREAK_CHARS = {
     " ",
     "\n",
     "\r",
@@ -151,35 +153,12 @@ WORD_BREAK_CHARS_ = [
     "\u202f",
     "\u205f",
     "\u3000",
-]
-
-WORD_BREAK_CHARS = set(WORD_BREAK_CHARS_)
+}
 
 
-def remove_excess_words(text: str, text_words_count: int, max_words: int) -> tuple[str, int]:
-    if max_words <= 0:
-        return text, text_words_count
-
-    if max_words >= text_words_count:
-        return text, text_words_count
-
-    current_words_count = text_words_count
-    position = len(text)
-    in_word = False
-    while position > 0 and current_words_count > max_words:
-        position -= 1
-        ch = text[position]
-        if ch in WORD_BREAK_CHARS:
-            if in_word:
-                current_words_count -= 1
-                in_word = False
-        else:
-            if not in_word:
-                in_word = True
-
-    return text[:position], current_words_count
-
-def remove_excess_words_optimized(text: str, text_words_count: int, max_words: int) -> tuple[str, int]:
+def remove_excess_words(
+    text: str, text_words_count: int, max_words: int
+) -> tuple[str, int]:
 
     if max_words <= 0:
         return text, text_words_count
@@ -205,4 +184,8 @@ def remove_excess_words_optimized(text: str, text_words_count: int, max_words: i
             word_count += 1
             in_word = True
 
-    return (text, text_words_count) if word_count >= max_words else (text[:last_break_index], word_count)
+    return (
+        (text, text_words_count)
+        if word_count >= max_words
+        else (text[:last_break_index], word_count)
+    )
